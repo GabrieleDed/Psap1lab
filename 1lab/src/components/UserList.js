@@ -3,7 +3,6 @@ import {GlobalContext} from '../context/GlobalState'
 import { Link } from 'react-router-dom';
 import {
     ListGroup,
-    ListGroupItem,
     Button
 } from 'reactstrap';
 export const UserList = () => {
@@ -26,7 +25,7 @@ export const UserList = () => {
                         <td scope="row">{user.firstName}</td>
                         <td>{user.lastName}</td>
                         <td>{user.job}</td>
-                        <td>{user.deparment}</td>
+                        <td>{user.department}</td>
                         <div className="ml-auto">
                             <Link className="btn btn-warning mr-1" to={`edit/$
                             {user.id}`}>Edit</Link>
