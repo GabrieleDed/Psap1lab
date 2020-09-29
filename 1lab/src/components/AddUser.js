@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {GlobalContext} from '../context/GlobalState'
-import {Link} from 'react-router-dom';
+import { Link, useHistory } from "react-router-dom";
 import {
     Form,
     FormGroup,
@@ -12,10 +12,16 @@ import {
 
 export const AddUser = () => {
     const { addUser} = useContext(GlobalContext);
-    const history = useHistory ();
+    const history = useHistory();
 
     const onSubmit = () => {
-        history.push('/');
+        const newUser = {
+            id:4,
+            firstName: 'Anatalija',
+            lastName: 'Chezachanovska',
+            job: 'returns manager',
+            department: 'returns'
+        }
     }
     return (
         <Form onSubmit={onSubmit}>

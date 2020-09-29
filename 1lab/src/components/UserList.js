@@ -37,8 +37,6 @@ export const UserList = () => {
                 ))}
             </tbody>
         </table>
-            </ListGroupItem>
-            ))}
             
         </ListGroup>
     )
