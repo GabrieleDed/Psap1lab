@@ -1,10 +1,16 @@
 import React, {createContext, useReducer} from 'react';
+import { v4 as uuid } from "uuid";
 import AppReducer from './AppReducer';
 
 //State initiliazer
 
 const initialState = {
-    users: []
+    users: [
+        {id: uuid(), firstName: 'Michael', lastName: 'Putvin', job: 'Manager', department: 'Accounting'},
+        {id: uuid(), firstName: 'Alice', lastName: 'Wondervuna', job: 'Accountant', department: 'Accounting'},
+        {id: uuid(), firstName: 'Will', lastName: 'Tomskin', job: 'Manager', department: 'Public Relations'}
+    ]
+
 };
 
 export const GlobalContext = createContext(initialState);
@@ -43,3 +49,6 @@ export const GlobalProvider = ({children}) => {
         </GlobalContext.Provider>
     )
 }
+
+
+
