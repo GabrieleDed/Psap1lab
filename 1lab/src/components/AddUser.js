@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {GlobalContext} from '../context/GlobalState'
 import { Link, useHistory } from "react-router-dom";
 import {
@@ -11,6 +11,7 @@ import {
 } from 'reactstrap';
 
 export const AddUser = () => {
+    const [firstName, setFirstName] = useState('');
     const { addUser} = useContext(GlobalContext);
     const history = useHistory();
 
@@ -20,14 +21,22 @@ export const AddUser = () => {
             firstName: 'Anatalija',
             lastName: 'Chezachanovska',
             job: 'returns manager',
-            department: 'returns'
+            deparment: 'Returns'
+        }
+        addUser(newUser);
+        history.push('/');
+        
+        const onChange = (e) => {
+            setFirstName(e.target.firsName);
         }
     }
+
     return (
         <Form onSubmit={onSubmit}>
             <FormGroup>
-                <Label>Name</Label>
-                <Input type="text" placeholder="Enter Name"></Input>
+                <Label>First Name</Label>
+                <Input type="text" firsName ="firsName" value={firstName} placeholder="Enter First Name"></Input>
+               
             </FormGroup>
             <Button type="submit" >Submit</Button>
             <Link to="/" className="btn btn-danger ml-2">Cancel</Link>
