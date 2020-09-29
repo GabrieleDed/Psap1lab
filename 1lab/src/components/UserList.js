@@ -10,7 +10,7 @@ export const UserList = () => {
     return (
         <ListGroup className="mt-4">
             <table className="table">
-            <thead clasName="thread-dark">
+            <thead className="thread-dark">
                 <tr>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
@@ -21,17 +21,16 @@ export const UserList = () => {
             </thead>
             <tbody>
                 {users.map(user => (
-                    <tr>
-                        <td scope="row">{user.firstName}</td>
+                    <tr key={user.id}>
+                        <td>{user.firstName}</td>
                         <td>{user.lastName}</td>
                         <td>{user.job}</td>
                         <td>{user.department}</td>
-                        <div className="ml-auto">
-                            <Link className="btn btn-warning mr-1" to={`edit/$
-                            {user.id}`}>Edit</Link>
+                        <td className="ml-auto">
+                        <Link to={`/edit/${user.id}`} color="warning" className="btn btn-warning mr-1">Edit</Link>
                             <Button onClick={() =>removeUser(user.id)} 
                             color="danger">Delete</Button>
-                        </div>
+                        </td>
                     </tr>
                 ))}
             </tbody>

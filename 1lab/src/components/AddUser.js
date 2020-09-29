@@ -12,57 +12,40 @@ import {
 } from 'reactstrap';
 
 export const AddUser = () => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [job, setJob] = useState('');
-    const [department, setDepartment] = useState('');
+    const [user, setUser] = useState({
+        id: uuid(),
+        firstName: '',
+        lastName: '',
+        job: '',
+        department: ''
+    });
     const { addUser } = useContext(GlobalContext);
     const history = useHistory();
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const newUser = {
-            id: uuid(),
-            firstName,
-            lastName,
-            job,
-            department
-        }
-        console.log(newUser);
-        addUser(newUser);
+        addUser(user);
         history.push("/");
     }
 
     const onChange = (e) => {
-        setFirstName(e.target.value);
-    }
-
-    const onChange2 = (e) => {
-        setLastName(e.target.value);
-    }
-
-    const onChange3 = (e) => {
-        setJob(e.target.value);
-    }
-
-    const onChange4 = (e) => {
-        setDepartment(e.target.value);
+        setUser({ ...user, [e.target.name]: e.target.value });
     }
 
     return (
         <Form onSubmit={onSubmit}>
             <FormGroup>
                 <Label>First Name</Label>
-                <Input type="text" firstName ="firstName" value={firstName} onChange={onChange} placeholder="Enter First Name" required></Input>
+                <Input type="text" name ="firstName" value={user.firstName} onChange={onChange} placeholder="Enter First Name" required></Input>
                
                 <Label>Last Name</Label>
-                <Input type="text" lastName ="lastName" value={lastName} onChange={onChange2} placeholder="Enter Last Name" required></Input>
+                <Input type="text" name ="lastName" value={user.lastName} onChange={onChange} placeholder="Enter Last Name" required></Input>
 
                 <Label>Job</Label>
-                <Input type="text" job ="job" value={job} onChange={onChange3} placeholder="Enter Job" required></Input>
+                <Input type="text" name ="job" value={user.job} onChange={onChange} placeholder="Enter Job" required></Input>
 
                 <Label>Department</Label>
-                <Input type="text" department ="department" onChange={onChange4} value={department} placeholder="Enter Department" required></Input>
+                <Input type="text" name ="department" onChange={onChange} value={user.department} placeholder="Enter Department" required></Input>
             </FormGroup>
             <Button type="submit" >Submit</Button>
             <Link to="/" className="btn btn-danger ml-2">Cancel</Link>
