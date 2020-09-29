@@ -7,17 +7,20 @@ import {
     Button
 } from 'reactstrap';
 export const UserList = () => {
-    const { users } = useContext(GlobalContext);
+    const { users , removeUser} = useContext(GlobalContext);
     return (
         <ListGroup className="mt-4">
             {users.map(user => (
                 <ListGroupItem className="d-flex">
-                <strong>{user.firstname } </strong>
-                <strong>{user.lastname}</strong>
+                <strong>{user.firstName }  </strong>
+                <strong> {user.lastName }</strong>
+                <strong>{user.job }</strong>
+                <strong>{user.deparment }</strong>
                 <div className="ml-auto">
                     <Link className="btn btn-warning mr-1" to={`edit/$
                     {user.id}`}>Edit</Link>
-                    <Button color="danger">Delete</Button>
+                    <Button onClick={() =>removeUser(user.id)} 
+                    color="danger">Delete</Button>
                 </div>
             </ListGroupItem>
             ))}
